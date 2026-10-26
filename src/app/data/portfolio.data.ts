@@ -153,7 +153,7 @@ export const PROYECTOS: Project[] = [
     caso: {
       problema: 'Se requería una tienda en línea para una farmacia que permitiera a los clientes comprar productos de manera segura y eficiente.',
       solucion: 'Se diseñó e implementó una tienda en línea para una farmacia utilizando ASP.NET Core y SQL Server, con funcionalidades como carrito de compras, autenticación de usuarios y gestión de inventario con roles.',
-      resultados: 'Se logró una tienda en línea funcional y segura que permitió a los clientes comprar productos de manera eficiente, mejorando la experiencia de compra y aumentando las ventas de la farmacia. Además, el administrador y el farmacéutico pudieron gestionar los productos y pedidos en un solo sistema.',
+      resultados: 'Se desarrolló una tienda en línea funcional y segura, diseñada para facilitar el proceso de compra y ofrecer una experiencia de usuario intuitiva. Asimismo, se integró un sistema de gestión que permite a los administradores y farmacéuticos administrar los productos y pedidos desde una misma plataforma.',
     }
   },
   { tipo: 'Proyecto académico', categorias: ['academico'], titulo: 'CRM Centro Cultural',
