@@ -1,0 +1,25 @@
+<header class="header" [class.is-scrolled]="scrolled()">
+  <div class="header__inner container">
+    <a href="#inicio" class="header__logo" aria-label="Ir al inicio">
+      <img src="assets/img/logo-mb.svg" alt="Logo MB" width="46" height="43">
+    </a>
+
+    <button class="header__burger" type="button" (click)="toggle()"
+            [attr.aria-expanded]="abierto" aria-controls="menu" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="menu" class="header__nav" [class.is-open]="abierto" aria-label="Principal">
+      <ul>
+        @for (item of nav; track item.href) {
+          <li><a [href]="item.href" (click)="cerrar()" [class.is-active]="activo() === item.href"
+               [attr.aria-current]="activo() === item.href ? 'true' : null">{{ item.label }}</a></li>
+        }
+      </ul>
+      <a class="btn header__cv" [href]="perfil.cv" download>
+        <img src="assets/icons/download.svg" alt="" aria-hidden="true"> Descargar CV
+      </a>
+    </nav>
+  </div>
+  <div class="header__progress" [style.transform]="'scaleX(' + progreso() + ')'" aria-hidden="true"></div>
+</header>

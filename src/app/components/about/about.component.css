@@ -1,0 +1,21 @@
+.about { padding: 72px 0 0; }   /* sin espacio abajo: la foto toca la sección Habilidades */
+.about__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.about__photo { align-self: end; aspect-ratio: 1 / 1; overflow: hidden; display: flex; align-items: flex-end; }
+.about__img { width: 100%; height: auto; }
+.about__text .about__title { font-family: var(--font-display); font-weight: 400; font-size: var(--fs-title); color: var(--ink); }
+.about__text .about__subtitle { font-family: var(--font-body); color: var(--accent); font-weight: 800; max-width: none; font-size: var(--fs-subtitle); line-height: 1.25; margin: 14px 0 28px; }
+.about__text p { color: var(--para); font-size: var(--fs-body); line-height: 1.6; max-width: 62ch; }
+.about__text p + p { margin-top: 24px; }
+
+@media (max-width: 860px) {
+  .about { padding: 48px 0 56px; }   /* en móvil la foto va arriba y el texto abajo */
+  .about__inner { grid-template-columns: 1fr; gap: 28px; }
+  .about__text .about__subtitle { margin: 10px 0 20px; }
+  .about__text p + p { margin-top: 18px; }
+}
+@media (max-width: 600px) {
+  .about { padding: 36px 0 44px; }
+  .about__inner { gap: 20px; }
+  .about__text .about__subtitle { margin: 8px 0 16px; }
+  .about__text p + p { margin-top: 14px; }
+}

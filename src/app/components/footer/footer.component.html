@@ -1,0 +1,24 @@
+<footer class="footer">
+  <div class="footer__inner container">
+    <img class="footer__logo" src="assets/img/logo-mb-footer.svg" alt="" aria-hidden="true">
+
+    <nav class="footer__nav" aria-label="Pie de página">
+      <ul>
+        @for (item of nav; track item.href) {
+          <li><a [href]="item.href">{{ item.label }}</a></li>
+        }
+      </ul>
+    </nav>
+
+    <ul class="footer__contact">
+      <li><img src="assets/icons/email.svg" alt="" aria-hidden="true">
+        <span>Correo: <a [href]="'mailto:' + perfil.correo">{{ perfil.correo }}</a></span></li>
+      <li><img src="assets/icons/phone.svg" alt="" aria-hidden="true">
+        <span>Teléfono / WhatsApp: <a [href]="perfil.whatsapp" target="_blank" rel="noopener noreferrer">{{ perfil.telefono }}</a></span></li>
+      <li><img src="assets/icons/linkedin.svg" alt="" aria-hidden="true">
+        <span>LinkedIn: <a [href]="perfil.linkedin" target="_blank" rel="noopener noreferrer">linkedin.com/in/briyit-melany-capcha96</a></span></li>
+      <li><img src="assets/icons/github.svg" alt="" aria-hidden="true">
+        <span>GitHub: <a [href]="perfil.github" target="_blank" rel="noopener noreferrer">{{ perfil.github }}</a></span></li>
+    </ul>
+  </div>
+</footer>

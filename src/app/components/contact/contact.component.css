@@ -1,0 +1,13 @@
+.contact { margin-bottom: 100px; }
+.contact__box { position: relative; background: #fff; padding: 56px 24px 64px; text-align: center; box-shadow: 0 4px 28px rgba(0, 0, 0, .12); }
+.contact__box .section-title { color: var(--ink); }
+.contact__content p { margin: 28px auto 36px; color: var(--para); font-size: var(--fs-body); line-height: 1.6; }
+.contact__actions { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
+
+@media (max-width: 860px) { .contact { margin-bottom: 64px; } }
+@media (max-width: 600px) {
+  .contact { margin-bottom: 44px; }
+  .contact__box { padding: 36px 18px 40px; }
+  .contact__content p { margin: 18px auto 24px; }
+  .contact__actions { gap: 12px; }
+}

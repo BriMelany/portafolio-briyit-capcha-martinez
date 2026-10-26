@@ -1,0 +1,78 @@
+<section id="proyectos" class="projects">
+  <div class="container">
+    <h2 class="section-title" appReveal>Proyectos</h2>
+
+    <!-- Filtro por tipo de proyecto -->
+    <div class="filters" role="group" aria-label="Filtrar proyectos por tipo" appReveal>
+      @for (f of filtros; track f.id) {
+        <button type="button" class="chip" [class.is-active]="filtro() === f.id"
+                [attr.aria-pressed]="filtro() === f.id" (click)="filtrar(f.id)">
+          {{ f.label }} <span class="chip__n" aria-hidden="true">{{ contar(f.id) }}</span>
+        </button>
+      }
+    </div>
+
+    <div class="projects__grid">
+      @for (p of visibles(); track p.titulo; let i = $index) {
+        <article class="card" [class.card--largo]="p.largo" [appReveal]="i % 3"
+                [class.is-previewing]="vistaCompleta() === p.titulo">
+          <div class="card__media">
+            <!-- La captura se recorre con el botón «Ver página completa» (escritorio, tablet y celular) -->
+            <button type="button" class="card__shot" [style.--dur.s]="p.duracion"
+                    (click)="abrir(p, $event)" [attr.aria-label]="'Ver el caso de ' + p.titulo">
+              <img class="card__img" [src]="p.imagen" [alt]="'Captura de la página completa de ' + p.titulo"
+                   [width]="p.ancho" [height]="p.alto" loading="lazy" decoding="async">
+            </button>
+
+            @if (p.largo) {
+              <button type="button" class="card__hint" (click)="alternarVista(p)"
+                      [attr.aria-label]="(vistaCompleta() === p.titulo ? 'Volver arriba en la captura de ' : 'Ver página completa de ') + p.titulo">
+                <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" [class.up]="vistaCompleta() === p.titulo"><path d="M2 4.5 6 8.5 10 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                {{ vistaCompleta() === p.titulo ? 'Volver arriba' : 'Ver página completa' }}
+              </button>
+            }
+          </div>
+
+          <button type="button" class="card__body" (click)="abrir(p, $event)"
+                  [attr.aria-label]="'Ver el caso de ' + p.titulo">
+            <div class="card__text">
+              @if (p.tipo) { <span class="card__tipo">{{ p.tipo }}</span> }
+              <h3>{{ p.titulo }}</h3>
+              <div class="card__tags">
+                @for (t of p.tecnologias; track t) { <span>{{ t }}</span> }
+              </div>
+            </div>
+            <img class="card__go" src="assets/icons/arrow-circle.svg" alt="" aria-hidden="true" width="28" height="28">
+          </button>
+        </article>
+      }
+    </div>
+  </div>
+
+  <!-- ===== Pop up del caso ===== -->
+  @if (activo(); as p) {
+    <div class="modal" (click)="cerrar()">
+      <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modal-titulo"
+           (click)="$event.stopPropagation()" (keydown)="atrapar($event)">
+        <button #cerrarBtn type="button" class="modal__close" (click)="cerrar()" aria-label="Cerrar">
+          <img src="assets/icons/close.svg" alt="" width="42" height="42" aria-hidden="true">
+        </button>
+
+        <h3 id="modal-titulo" class="modal__title">{{ p.titulo }}</h3>
+
+        <h4>Problema</h4>
+        <p>{{ p.caso.problema }}</p>
+
+        <h4>Solución</h4>
+        <p>{{ p.caso.solucion }}</p>
+
+        <h4>Resultados</h4>
+        <p>{{ p.caso.resultados }}</p>
+
+        <a class="btn modal__cta" [href]="p.url" target="_blank" rel="noopener noreferrer">
+          {{ p.boton || 'Ver sitio web' }}
+        </a>
+      </div>
+    </div>
+  }
+</section>

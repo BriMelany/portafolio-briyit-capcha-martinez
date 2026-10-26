@@ -1,0 +1,32 @@
+.header { position: sticky; top: 0; z-index: 50; background: #fff; height: var(--header-h); box-shadow: 0 2px 12px rgba(0, 0, 0, .1); transition: box-shadow .3s, background .3s; }
+.header.is-scrolled { background: rgba(255, 255, 255, .95); backdrop-filter: blur(8px); box-shadow: 0 6px 24px rgba(0, 0, 0, .16); }
+.header__progress { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--accent); transform-origin: left; transition: transform .1s linear; }
+.header__inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+.header__nav { display: flex; align-items: center; flex: 1; justify-content: space-between; margin-left: 56px; }
+.header__nav ul { display: flex; gap: 40px; margin: 0 auto; transform: translateX(8px); }
+.header__nav li a { font-size: var(--fs-nav); font-weight: 500; color: var(--ink); padding: 6px 0; border-bottom: 2px solid transparent; transition: border-color .2s; }
+.header__nav li a:hover, .header__nav li a.is-active { border-color: var(--accent); }
+.header__burger { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+.header__burger span { display: block; width: 24px; height: 3px; background: var(--ink); margin: 5px 0; border-radius: 2px; }
+
+@media (max-width: 860px) {
+  .header__logo img { width: 30px; height: auto; }
+
+  .header__burger { display: block; margin-right: -8px; }
+  .header__nav {
+    position: absolute; top: var(--header-h); left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 16px;
+    margin: 0; padding: 20px var(--gutter); display: none;
+    background: #fff; border-top: 1px solid rgba(0, 0, 0, .08);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
+  }
+  .header__nav.is-open { display: flex; }
+  .header__nav ul { flex-direction: column; gap: 12px; margin: 0; transform: none; }
+}
+
+@media (max-width: 600px) {
+  .header__logo img { width: 26px; }
+  .header__burger { padding: 6px; }
+  .header__burger span { width: 22px; margin: 4px 0; }
+  .header__nav { padding: 16px var(--gutter) 20px; gap: 14px; }
+}

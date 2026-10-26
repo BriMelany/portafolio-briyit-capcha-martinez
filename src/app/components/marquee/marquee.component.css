@@ -1,0 +1,10 @@
+.marquee { background: var(--navy); color: #fff; overflow: hidden; padding: 24px 0; white-space: nowrap; }
+.marquee__track { display: inline-flex; width: max-content; animation: scroll 32s linear infinite; }
+.marquee__track span { font-size: 1.1rem; font-weight: 500; padding-right: 7rem; }
+@keyframes scroll { to { transform: translateX(-50%); } }
+
+@media (max-width: 860px) { .marquee__track span { font-size: 1rem; } }
+@media (max-width: 600px) {
+  .marquee { padding: 16px 0; }
+  .marquee__track span { font-size: .85rem; padding-right: 3.5rem; }
+}

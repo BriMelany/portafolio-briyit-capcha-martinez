@@ -1,0 +1,28 @@
+<section id="habilidades" class="skills">
+  <img class="skills__stripes skills__stripes--left" src="assets/img/ring-hero.svg" alt="" aria-hidden="true">
+  <img class="skills__stripes skills__stripes--right" src="assets/img/ring-hero.svg" alt="" aria-hidden="true">
+
+  <div class="container">
+    <h2 class="section-title" appReveal>Habilidades</h2>
+
+    <div class="skills__row skills__row--3">
+      @for (s of fila1; track s.titulo; let i = $index) {
+        <article class="skill" [appReveal]="i">
+          <img [src]="s.icono" alt="" width="32" height="32" aria-hidden="true">
+          <h3>{{ s.titulo }}</h3>
+          <p>{{ s.detalle }}</p>
+        </article>
+      }
+    </div>
+
+    <div class="skills__row skills__row--2">
+      @for (s of fila2; track s.titulo; let i = $index) {
+        <article class="skill" [appReveal]="i">
+          <img [src]="s.icono" alt="" width="32" height="32" aria-hidden="true">
+          <h3>{{ s.titulo }}</h3>
+          <p>{{ s.detalle }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

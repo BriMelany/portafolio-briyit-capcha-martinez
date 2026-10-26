@@ -1,0 +1,6 @@
+<div class="marquee">
+  <div class="marquee__track">
+    @for (n of repeticiones; track n) { <span>{{ texto }}</span> }
+    @for (n of repeticiones; track n) { <span aria-hidden="true">{{ texto }}</span> }
+  </div>
+</div>

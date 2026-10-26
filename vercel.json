@@ -1,0 +1,5 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/portafolio-briyit/browser",
+  "framework": "angular"
+}

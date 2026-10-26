@@ -1,0 +1,55 @@
+<section id="inicio" class="hero" [class.is-ready]="listo()">
+  <!-- Círculo de rayas detrás del dispositivo (pegado al borde derecho de la pantalla) -->
+  <img class="hero__ring" src="assets/img/ring-hero.svg" alt="" aria-hidden="true">
+
+  <div class="hero__inner container">
+    <div class="hero__text">
+      <h1 [attr.aria-label]="texto">
+        @for (p of palabras; track p.inicio) {
+          <span class="word" aria-hidden="true">
+            @for (l of p.letras; track $index) {
+              <span class="ch"
+                    [class.on]="p.inicio + $index < escritas()"
+                    [class.cursor]="!listo() && p.inicio + $index === escritas() - 1">{{ l }}</span>
+            }
+          </span>{{ ' ' }}
+        }
+      </h1>
+      <p class="hero__role">Soy una desarrolladora web</p>
+      <p class="hero__lead">
+        Apasionada por la tecnología y el diseño digital, con experiencia creando sitios web
+        responsive, interfaces intuitivas y soluciones creativas centradas en la experiencia del usuario.
+      </p>
+      <a href="#proyectos" class="btn hero__cta">
+        Ver proyectos <img src="assets/icons/arrow.svg" alt="" aria-hidden="true">
+      </a>
+    </div>
+
+    <div class="hero__visual" role="img"
+         [attr.aria-label]="'Proyecto en pantalla: ' + slides[actual()].nombre"
+         (pointerenter)="cursor($event, true)" (pointerleave)="cursor($event, false)">
+      <!-- Laptop: las capturas se alternan dentro de la pantalla -->
+      <div class="device device--laptop">
+        <div class="device__screen">
+          @for (s of slides; track s.nombre; let i = $index) {
+            <img [src]="s.escritorio" alt="" width="960" height="540"
+                 [class.on]="i === actual()" [attr.loading]="i === 0 ? 'eager' : 'lazy'"
+                 [attr.fetchpriority]="i === 0 ? 'high' : null" decoding="async">
+          }
+        </div>
+        <img class="device__frame" src="assets/img/mockup-laptop.webp" alt="" width="1100" height="637">
+      </div>
+
+      <!-- Celular: la misma web en versión móvil -->
+      <div class="device device--phone">
+        <div class="device__screen">
+          @for (s of slides; track s.nombre; let i = $index) {
+            <img [src]="s.movil" alt="" width="492" height="829"
+                 [class.on]="i === actual()" [attr.loading]="i === 0 ? 'eager' : 'lazy'" decoding="async">
+          }
+        </div>
+        <img class="device__frame" src="assets/img/mockup-phone.webp" alt="" width="400" height="780">
+      </div>
+    </div>
+  </div>
+</section>

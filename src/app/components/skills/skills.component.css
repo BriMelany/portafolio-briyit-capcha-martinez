@@ -1,0 +1,48 @@
+.skills { position: relative; background: var(--navy); color: #fff; padding: 70px 0 120px; overflow: hidden; }
+.skills .section-title { margin-bottom: 56px; color: #fff; }
+
+/* Recurso visual: círculo de rayas que gira en dos esquinas (sale por los bordes de la sección) */
+.skills { --s: 289px; }
+.skills__stripes {
+  position: absolute; width: var(--s); height: var(--s); max-width: none;
+  pointer-events: none; animation: spin 70s linear infinite, fade-in 1.2s ease-out both;
+}
+.skills__stripes--left { left: calc(var(--s) * -.325); top: calc(var(--s) * -.325); }
+.skills__stripes--right { right: calc(var(--s) * -.325); bottom: calc(var(--s) * -.325 + 40px); animation-direction: reverse, normal; }
+
+@keyframes spin { to { rotate: 360deg; } }
+@keyframes fade-in { from { opacity: 0; } }
+
+.skills__row { position: relative; display: grid; gap: 28px; justify-content: center; margin-inline: auto; }
+.skills__row--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 840px; }
+.skills__row--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 560px; margin-top: 28px; }
+
+.skill {
+  background: #fff; padding: 28px 24px; min-height: 160px;
+  box-shadow: inset 0 0 0 var(--accent);
+  transition: transform .25s, background .25s, box-shadow .25s,
+              opacity .7s ease var(--d, 0ms), translate .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms);
+}
+.skill:hover { transform: translateY(-5px); background: #f3f7ff; box-shadow: inset 0 4px 0 var(--accent); }
+.skill img { transition: transform .35s cubic-bezier(.3, 1.6, .5, 1); }
+.skill:hover img { transform: scale(1.15) rotate(-6deg); }
+.skill img { margin-bottom: 14px; }
+.skill h3 { color: var(--ink); font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+.skill p { font-size: var(--fs-small); line-height: 1.5; color: var(--para); }
+
+@media (max-width: 860px) {
+  .skills { padding: 52px 0 72px; }
+  .skills .section-title { margin-bottom: 36px; }
+  .skills__row--3, .skills__row--2 { grid-template-columns: 1fr; max-width: 420px; }
+  .skills__row { gap: 16px; }
+  .skills__row--2 { margin-top: 16px; }
+  .skills { --s: 195px; }
+}
+@media (max-width: 600px) {
+  .skills { padding: 40px 0 56px; }
+  .skills .section-title { margin-bottom: 28px; }
+  .skill { padding: 20px 18px; min-height: 0; }
+  .skill img { width: 28px; height: 28px; margin-bottom: 10px; }
+  .skill h3 { font-size: .9rem; margin-bottom: 6px; }
+  .skills { --s: 150px; }
+}
