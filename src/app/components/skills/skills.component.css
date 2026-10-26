@@ -1,5 +1,5 @@
-.skills { position: relative; background: var(--navy); color: #fff; padding: 56px 0 120px; overflow: hidden; }
-.skills .section-title { margin-bottom: 56px; color: #fff; }
+.skills { position: relative; background: var(--navy); color: #fff; padding: 56px 0 56px; overflow: hidden; }
+.skills .section-title { margin-bottom: 40px; color: #fff; }
 
 /* Recurso visual: círculo de rayas que gira en dos esquinas (sale por los bordes de la sección) */
 .skills { --s: 289px; }

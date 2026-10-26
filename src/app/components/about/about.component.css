@@ -1,4 +1,4 @@
-.about { padding: 56px 0 0; }   /* sin espacio abajo: la foto toca la sección Habilidades */
+.about { padding: 40px 0 0; }   /* sin espacio abajo: la foto toca la sección Habilidades */
 .about__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 .about__photo { align-self: end; aspect-ratio: 1 / 1; overflow: hidden; display: flex; align-items: flex-end; }
 .about__img { width: 100%; height: auto; }
